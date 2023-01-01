@@ -1,0 +1,53 @@
+﻿@model Question_Application.Models.User
+
+@{
+
+}
+
+<body>
+    <div class="container">
+        <div class="col-md-6 text-center mb-5">
+            <h2 class="text-center" style="font-family: 'Agency FB'; color: wheat;">REGISTER</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <h3>Fill in Your data : </h3>
+
+                <form method="post" name="form">
+                    <div class="form-group">
+                        <label asp-for="Username"></label>
+                        <input asp-for="Username" class="form-control" placeholder="Enter username">
+                        <small id="emailHelp" class="form-text text-muted">Everyone is gonna know you by this name.</small>
+                        <span asp-validation-for="Username" class="error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+                        <input asp-for="Password" class="form-control" placeholder="Enter password">
+                        <span asp-validation-for="Password" class="error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PasswordConfirmed"></label>
+                        <input asp-for="PasswordConfirmed" class="form-control" placeholder="Re-enter password for confirmation">
+                        <span asp-validation-for="PasswordConfirmed" class="error"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <input asp-for="IsAdmin" class="form-check-input">
+                        <label class="form-check-label">Are you an Admin?</label>
+                    </div>
+                    <a asp-area="" asp-controller="User" asp-action="Login" class="text-lg-right">I already have an account!</a><br />
+                    @*<button type="submit" id="register" class="btn btn-primary" style="margin-top: 30px;">Submit</button>*@
+                    <input type="submit" class="btn btn-outline-primary" style="margin-top: 30px;" value="Register" />
+                </form>
+            </div>
+        </div>
+
+        @if (ViewData["is_registered"] != null && ViewData["is_registered"].ToString() == "true")
+        {
+            <script language="javascript">
+                alert("You are successfully registered!");
+                window.location = "../Home/Index";
+            </script>
+        }
+    </div>
+</body>

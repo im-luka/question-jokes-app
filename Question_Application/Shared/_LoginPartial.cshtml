@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+<ul class="navbar-nav">
+    @if (HttpContextAccessor.HttpContext.Session.GetString("UserSession") == null)
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Log In</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+        </li>
+    }
+    else 
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="">Hello @HttpContextAccessor.HttpContext.Session.GetString("UserSession")!</a>
+        </li>
+        <li class="nav-item">
+            <form method="post" asp-area="" asp-controller="User" asp-action="Logout">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+    }
+</ul>

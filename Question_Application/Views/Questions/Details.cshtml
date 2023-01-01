@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+@model Question_Application.ViewModel.QuestionAndAuthor
+
+@{
+
+}
+
+<body>
+    <div class="container">
+        <div class="col-md-6 text-center mb-5">
+            <h2 class="text-center" style="font-family: 'Agency FB'; color: wheat;">Selected Question: </h2>
+        </div>
+
+        <div class="row justify-content-lg-start">
+            <div class="col-md-8 col-lg-8">
+                <div class="card-group">
+                    <label class="custom-control-label">Question ID:&nbsp; </label>
+                    <label> @Model.Question.ID</label>
+                </div>
+
+                <div class="card-group">
+                    <label class="custom-control-label">Question:&nbsp; </label>
+                    <label> @Model.Question.Question_</label>
+                </div>
+
+                <div class="card-group">
+                    <label class="custom-control-label">Answer:&nbsp; </label>
+                    <label> @Model.Question.Answer</label>
+                </div>
+
+                <div class="card-group">
+                    <label class="custom-control-label">Author:&nbsp; </label>
+                    <label> @Model.Author.Username</label>
+                </div>
+
+                <div class="card-group">
+                    <label class="custom-control-label">Date published:&nbsp; </label>
+                    <label> @Model.Question.Date</label>
+                </div>
+
+                @if (HttpContextAccessor.HttpContext.Session.GetInt32("IsAdmin") != null)
+                {
+                    <div class="card-group" style="margin-top: 35px;">
+                        <a class="btn btn-primary" style="margin-right: 10px;" asp-controller="Questions" asp-action="Edit" asp-route-questionID="@Model.Question.ID">Edit</a>
+
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                        <div style="color: black;" class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalLabel">Delete</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete this data?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                        <a class="btn btn-primary" asp-controller="Questions" asp-action="Delete" asp-route-questionID="@Model.Question.ID">Yes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>

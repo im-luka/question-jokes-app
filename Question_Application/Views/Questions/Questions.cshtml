@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+@model List<Question_Application.ViewModel.QuestionAndAuthor>
+
+@{
+    int counter = 1;
+
+    int Increase(ref int num)
+    {
+        return num++;
+    }
+}
+
+<h2 class="alert-secondary border-success col-12" style="font-family: 'Goudy Stout';">List of questions:</h2>
+
+@if (HttpContextAccessor.HttpContext.Session.GetString("UserSession") != null)
+{
+    <div class="row">
+        <div class="col-3">
+            <a asp-area="" asp-controller="Questions" asp-action="Create">Create new</a>
+        </div>
+    </div>
+}
+
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Question</th>
+            <th scope="col">User</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@Increase(ref counter)</th>
+                <td>@item.Question.Question_</td>
+                <td>@item.Author.Username</td>
+                <td>@item.Question.Date</td>
+                <td>
+                    <a asp-controller="Questions" asp-action="Details" asp-route-id="@item.Question.ID">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

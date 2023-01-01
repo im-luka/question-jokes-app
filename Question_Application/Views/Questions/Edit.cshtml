@@ -1,0 +1,49 @@
+﻿@model Question_Application.ViewModel.QuestionAndAuthor
+
+@{
+
+}
+
+<body>
+    <div class="container">
+        <div class="col-md-6 text-center mb-5">
+            <h2 class="text-center" style="font-family: 'Agency FB'; color: wheat;">Edit your question: </h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+
+                <form method="post" name="form">
+                    <div class="form-group" style="visibility: hidden;">
+                        <label asp-for="Question.ID"></label>
+                        <input asp-for="Question.ID" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Question.Question_"></label>
+                        <input asp-for="Question.Question_" class="form-control" placeholder="Enter your question" >
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Question.Answer"></label>
+                        <input asp-for="Question.Answer" class="form-control" placeholder="Enter your answer" >
+                    </div>
+
+                    <input type="submit" class="btn btn-outline-primary" style="margin-top: 30px;" value="Submit question" />
+                </form>
+            </div>
+        </div>
+
+        @if(ViewData["sql_exception"] != null)
+            {
+                <h1 style="color: white;">@ViewData["sql_exception"]</h1>
+            }
+
+        @if (ViewData["is_edited"] != null)
+        {
+            <script language="javascript">
+                alert('@ViewData["is_edited"]');
+                window.location = "../Questions/ListOfQuestions";
+            </script>
+        }
+    </div>
+</body>

@@ -1,0 +1,112 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="main_header">YOU'RE WELCOMED HERE IF YOU KNOW HOW TO ASK STUPID QUESTIONS AND GIVE SIMPLE ANSWERS</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <img src="/images/joker.jpg" class="img-fluid img-edit" alt="Responsive image">
+    </div>
+
+    <div class="row" style="margin-top: 45px;">
+        <div class="col-4">
+            <h3>WHO ARE WE?</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3"> </div>
+
+        <div class="col-2">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+
+        <div class="col-2">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+
+        <div class="col-2">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+
+        <div class="col-3"></div>
+    </div>
+
+    <div class="row" style="margin-top: 45px;">
+        <div class="col-12">
+            <h3>HOW DO YOU KNOW IF YOU COULD BE PART OF OUR GROUP?</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4 div_cover">
+            <img src="/images/cover1.jpg" class="img-fluid img-cover" alt="Responsive image">
+            <h4>YOU ARE A BIG CARTOON FAN<span style="visibility: hidden;">YEAH YOU ARE</span></h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        </div>
+
+        <div class="col-4 div_cover">
+            <img src="/images/cover2.jpg" class="img-fluid img-cover" alt="Responsive image">
+            <h4>YOU ARE NOT LEAVING A PARTY EARLY...EVER</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        </div>
+
+        <div class="col-4 div_cover">
+            <img src="/images/cover3.jpg" class="img-fluid img-cover" alt="Responsive image">
+            <h4>YOU'LL ALWAYS STAND FOR YOURSELF -> AND YOUR FRIENDS</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        </div>
+
+        <div class="col-4 div_cover">
+            <img src="/images/cover4.jpg" class="img-fluid img-cover" alt="Responsive image">
+            <h4>YOU ARE NOT SENSITIVE!! YOU CAN TAKE A JOKE</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        </div>
+
+        <div class="col-4 div_cover">
+            <img src="/images/cover5.jpg" class="img-fluid img-cover" alt="Responsive image">
+            <h4>2 COOL 4 SCHOOL MOTO<span style="visibility: hidden;">YEAH YOU ARE</span></h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        </div>
+
+        <div class="col-4 div_cover">
+            <img src="/images/cover6.jpg" class="img-fluid img-cover" alt="Responsive image">
+            <h4>AT THE END OF THE DAY, YOU'RE HERE TO HELP'</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        </div>
+    </div>
+
+    @if (HttpContextAccessor.HttpContext.Session.GetString("UserSession") == null)
+    {
+        <div class="row" style="margin-top: 100px;">
+            <div class="col-6"></div>
+            <div class="col-6">
+                <h4><span style="color: red; font-size: 40px; font-family: Chiller;">WHAT ARE YOU WAITING???</span> <span style="color: blue; font-size: 40px; font-family: 'Agency FB';">JUMP IN!</span></h4>
+            </div>
+        </div>
+
+        <div class="row" style="margin: 45px 0 50px 0;">
+            <div class="col-2"></div>
+
+            <div class="col-4">
+                <h5>If you already have an account : <span style="visibility: hidden;">You don't have to do anything</span></h5>
+                <a class="btn btn-primary btn-lg" style="margin-top: 30px;" asp-area="" asp-controller="User" asp-action="Login">Log In</a>
+            </div>
+
+            <div class="col-4">
+                <h5>If you don't have account, now it's time to finaly create one : </h5>
+                <a class="btn btn-primary btn-lg" style="margin-top: 30px;" asp-area="" asp-controller="User" asp-action="Register">Sign up</a>
+            </div>
+
+            <div class="col-2"></div>
+        </div>
+    }
+</div>
